@@ -1,0 +1,28 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Article from '../../layouts/Article.astro';
+import PostCard from '../../components/PostCard.astro';
+
+const all = (await getCollection('posts', ({ data }) => import.meta.env.PROD ? !data.draft : true))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const latest = all.slice(-4);
+---
+<Base title="Articles — using-IT">
+  <div class="wrap" style="padding-top: 40px;">
+    <div class="section-label" style="margin-top: 0;"><h2>All articles ({all.length})</h2></div>
+    <div class="post-list">
+      {all.map((p) => (
+        <article>
+          <h3><a href={`/${p.id}/`}>{p.data.title}</a></h3>
+          {p.data.description && <p style="font-size:0.9rem;">{p.data.description}</p>}
+          <div class="meta">{new Date(p.data.pubDate).toLocaleDateString('en-GB', { year:'numeric', month:'short', day:'numeric' })} · {p.data.categories?.join(' · ')}</div>
+        </article>
+      ))}
+    </div>
+  </div>
+  <div class="wrap-wide" style="padding-bottom: 40px;">
+    <div class="section-label"><h2>Latest</h2></div>
+    <div class="cards">{latest.map((p) => <PostCard post={p} />)}</div>
+  </div>
+</Base>

@@ -1,0 +1,22 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Article from '../layouts/Article.astro';
+
+/** Root-level catch-all so migrated WordPress posts keep their EXACT original URLs
+ *  (WP served posts at /slug/). WordPress pages (about-me, remote-support, youtube,
+ *  tools-2) are served here as well. Static routes (/, /blog/, /tools/, /licensing/,
+ *  /microsoft-licenses/, /blogposts/, /404) take precedence over this catch-all. */
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', ({ data }) => (import.meta.env.PROD ? !data.draft : true));
+  const pages = (await getCollection('pages', ({ data }) => (import.meta.env.PROD ? !data.draft : true)))
+    .filter((p) => p.id !== 'microsoft-licenses' && p.id !== 'tools');
+  return [...posts, ...pages].map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+<Base title={`${entry.data.title} — using-IT`} description={entry.data.description || entry.data.title}>
+  <Article entry={entry} />
+</Base>

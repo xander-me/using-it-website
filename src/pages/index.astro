@@ -1,0 +1,42 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import PostCard from '../components/PostCard.astro';
+import LicensingCta from '../components/LicensingCta.astro';
+
+const all = (await getCollection('posts', ({ data }) => import.meta.env.PROD ? !data.draft : true))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const featured = all[0];
+const rest = all.slice(1, 4);
+const fmt = (d: Date) => d.toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' });
+---
+<Base>
+  <section class="wrap" style="padding-top: 48px; padding-bottom: 40px;">
+    <div class="kicker">Latest article</div>
+    <h1 style="font-size: 1.9rem; line-height: 1.25; letter-spacing: -0.02em; color: var(--color-text-strong); font-weight: 700; margin-bottom: 12px; max-width: 640px;">
+      {featured.data.title}
+    </h1>
+    {featured.data.description && <p style="max-width: 560px;">{featured.data.description}</p>}
+    <p style="margin-top: 4px; max-width: 560px;">{featured.data.categories?.join(' · ')}</p>
+    <div class="article-meta" style="margin-top: 12px;">{fmt(new Date(featured.data.pubDate))} · {featured.data.categories?.[0]}</div>
+    <a class="btn-primary" style="margin-top: 20px; display: inline-block;" href={`/${featured.id}/`}>Read the article →</a>
+  </section>
+
+  <div class="wrap-wide">
+    <div class="section-label"><h2>Latest articles</h2><a class="btn-text" href="/blog/">View all →</a></div>
+    <div class="cards">
+      {rest.map((p) => <PostCard post={p} />)}
+    </div>
+
+    <div class="licensing-cta" style="margin-top: 44px;">
+      <div class="left">
+        <div class="tile" style="background: var(--color-accent);">M365</div>
+        <div>
+          <b>Need Microsoft licenses? It takes two minutes.</b>
+          <span class="small">Sign up as a customer at minelicenser.dk — quick, no commitments.</span>
+        </div>
+      </div>
+      <a class="btn-primary" href="https://minelicenser.dk/" target="_blank" rel="noopener">minelicenser.dk →</a>
+    </div>
+  </div>
+</Base>
