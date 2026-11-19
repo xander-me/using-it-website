@@ -45,3 +45,37 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  report-deploy-failure:
+    needs: deploy
+    if: failure() && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create issue with deploy failure logs
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: run } = await github.rest.actions.listJobsForWorkflowRun({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              run_id: context.runId,
+            });
+            const failed = run.jobs.filter(j => j.conclusion === 'failure');
+            const logs = [];
+            for (const j of failed) {
+              const { data } = await github.rest.actions.getJobLogs({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                job_id: j.id,
+              });
+              const tail = data.split('\n').slice(-60).join('\n');
+              logs.push('## ' + j.name + '\n\n```\n' + tail + '\n```');
+            }
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: 'Pages deploy failure on main',
+              body: 'Deploy to GitHub Pages failed. Log tails:\n\n' + logs.join('\n\n'),
+            });
