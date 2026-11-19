@@ -1,0 +1,44 @@
+name: CI — build & check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install
+      - name: Build
+        run: npm run build
+      - name: Check internal links
+        run: |
+          python3 - <<'EOF'
+          import re, pathlib, sys
+          errors = []
+          for f in pathlib.Path('dist').rglob('*.html'):
+              for m in re.finditer(r'href="(/[^"#]*?)(/)"', f.read_text()):
+                  target = m.group(1)
+                  ok = (pathlib.Path('dist') / target.lstrip('/')).exists() \
+                       or (pathlib.Path('dist') / (target.lstrip('/') + '/index.html')).exists() \
+                       or target in ('/rss.xml', '/sitemap-index.xml', '/robots.txt')
+                  if not ok:
+                      errors.append(f'{f}: broken internal link {target}')
+          for e in errors[:20]: print(e)
+          sys.exit(1 if errors else 0)
+          EOF
+      - name: Upload build artifact
+        if: github.ref == 'refs/heads/main'
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: dist
+          retention-days: 14
+
+  # Deployment: enable when staging target is decided (project-playbook#50 Phase 5).
+  # Preferred: SFTP least-privilege deploy to Simply.com; NEVER recursive-delete /timecalc/ or sibling tools.

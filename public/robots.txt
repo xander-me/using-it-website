@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://using-it.dk/sitemap-index.xml

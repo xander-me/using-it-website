@@ -1,0 +1,18 @@
+{
+  "name": "using-it-website",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "using-it.dk — static blog built with Astro. Migrated from WordPress (project-playbook#36/#50/#51).",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "new": "node scripts/new-post.mjs"
+  },
+  "dependencies": {
+    "@astrojs/rss": "^4.0.0",
+    "@astrojs/sitemap": "^3.2.0",
+    "astro": "^5.0.0"
+  }
+}
