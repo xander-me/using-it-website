@@ -1,0 +1,47 @@
+name: Deploy preview to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-preview
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install
+      - name: Enable GitHub Pages (source: GitHub Actions)
+        id: configure
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - name: Build with preview base path
+        run: npx astro build
+        env:
+          SITE_BASE: /using-it-website
+      - name: Rewrite root-absolute URLs to the project path
+        run: |
+          find dist -name '*.html' -print0 |
+          xargs -0 perl -pi -e 's{(href|src)="/((?!using-it-website/|/)[^"]*)}{$1="/using-it-website/$2}g'
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
