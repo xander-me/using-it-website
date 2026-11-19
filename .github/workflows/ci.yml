@@ -4,6 +4,11 @@ on:
   push:
     branches: [main]
   pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
 
 jobs:
   build:
@@ -15,8 +20,9 @@ jobs:
           node-version: 22
       - run: npm install
       - name: Build
-        run: npm run build
+        run: npm run build 2>&1 | tee build.log
       - name: Check internal links
+        if: success()
         run: |
           python3 - <<'EOF'
           import re, pathlib, sys
@@ -33,12 +39,53 @@ jobs:
           sys.exit(1 if errors else 0)
           EOF
       - name: Upload build artifact
-        if: github.ref == 'refs/heads/main'
+        if: success() && github.ref == 'refs/heads/main'
         uses: actions/upload-artifact@v4
         with:
           name: site
           path: dist
           retention-days: 14
 
-  # Deployment: enable when staging target is decided (project-playbook#50 Phase 5).
-  # Preferred: SFTP least-privilege deploy to Simply.com; NEVER recursive-delete /timecalc/ or sibling tools.
+  report-failure:
+    needs: build
+    if: failure() && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create issue with build failure
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: run } = await github.rest.actions.listJobsForWorkflowRun({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              run_id: context.runId,
+            });
+            const failed = run.jobs.filter(j => j.conclusion === 'failure');
+            const logs = [];
+            for (const j of failed) {
+              const { data } = await github.rest.actions.getJobLogs({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                job_id: j.id,
+              });
+              const tail = data.split('\n').slice(-80).join('\n');
+              logs.push(`## ${j.name}\n\n\`\`\`\n${tail}\n\`\`\``);
+            }
+            // close previous open build-failure issues
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo,
+              state: 'open', labels: 'build-failure',
+            });
+            for (const i of issues) {
+              await github.rest.issues.update({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: i.number, state: 'closed',
+              });
+            }
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Build failure on main (${context.sha.slice(0, 7)})`,
+              body: `Automatic report from CI run ${context.runId}.\n\n${logs.join('\n\n')}`,
+              labels: ['build-failure'],
+            });
