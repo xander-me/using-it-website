@@ -1,0 +1,50 @@
+/* Using-IT design tokens — source of truth (brand/BRAND-GUIDELINES.md) */
+
+:root {
+  /* light mode */
+  --color-bg: #ffffff;
+  --color-bg-subtle: #f4f7fb;
+  --color-border: #e1e8f2;
+  --color-text: #2c3648;
+  --color-text-strong: #101a2b;
+  --color-text-muted: #7c8aa0;
+  --color-accent: #1d5fd6;
+  --color-accent-hover: #174aa8;
+  --color-accent-subtle: #e8f0fc;
+  --color-warn: #b4611c;
+
+  /* spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* radius */
+  --radius-panel: 12px;
+  --radius-btn: 6px;
+  --radius-code: 8px;
+
+  /* type */
+  --font-ui: "InterVariable", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* shadow (only one) */
+  --shadow-card: 0 6px 24px rgba(20, 30, 50, 0.08);
+}
+
+[data-theme="dark"] {
+  --color-bg: #101a2b;
+  --color-bg-subtle: #17233a;
+  --color-border: #24334e;
+  --color-text: #c8d2e2;
+  --color-text-strong: #f0f4fa;
+  --color-text-muted: #7c8aa0;
+  --color-accent: #5b8feb;
+  --color-accent-hover: #7fa6f0;
+  --color-accent-subtle: #1b2c4a;
+  --color-warn: #d08a4a;
+}

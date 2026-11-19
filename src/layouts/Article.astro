@@ -1,0 +1,39 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { render } from 'astro:content';
+import LicensingCta from '../components/LicensingCta.astro';
+interface Props { entry: CollectionEntry<'posts'> | CollectionEntry<'pages'> }
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { title, description, pubDate, updatedDate } = entry.data;
+const d = new Date(pubDate);
+const dateStr = d.toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' });
+const upd = updatedDate && new Date(updatedDate).getTime() !== d.getTime()
+  ? ' · updated ' + new Date(updatedDate).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' })
+  : '';
+const cat = 'categories' in entry.data ? entry.data.categories?.join(' · ') ?? 'Article' : 'Page';
+const mins = entry.body ? Math.max(2, Math.round(entry.body.split(/\s+/).length / 220)) : null;
+---
+<section class="article-hero wrap">
+  <div class="kicker">{cat}</div>
+  <h1>{title}</h1>
+  <div class="article-meta">{dateStr}{upd} · by Alexander{mins ? ` · ${mins} min read` : ''}</div>
+</section>
+<div class="wrap prose" id="article">
+  <Content />
+  <LicensingCta compact={true} />
+</div>
+<script is:inline>
+  // Add a copy button to each code block (progressive enhancement)
+  document.querySelectorAll('#article pre').forEach(function (pre) {
+    pre.style.position = 'relative';
+    var btn = document.createElement('button');
+    btn.textContent = 'Copy';
+    btn.setAttribute('aria-label', 'Copy code to clipboard');
+    btn.style.cssText = 'position:absolute;top:6px;right:8px;border:1px solid var(--color-border);background:var(--color-bg);color:var(--color-accent);font-size:0.7rem;border-radius:6px;padding:2px 8px;cursor:pointer;font-family:var(--font-ui);';
+    btn.addEventListener('click', function () {
+      navigator.clipboard.writeText(pre.innerText).then(function () { btn.textContent = 'Copied ✓'; setTimeout(function () { btn.textContent = 'Copy'; }, 1500); });
+    });
+    pre.appendChild(btn);
+  });
+</script>

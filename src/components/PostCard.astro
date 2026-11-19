@@ -1,0 +1,36 @@
+---
+import type { CollectionEntry } from 'astro:content';
+interface Props { post: CollectionEntry<'posts'> }
+const { post } = Astro.props;
+const { title, pubDate, categories, description } = post.data;
+const d = new Date(pubDate);
+const dateStr = d.toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' });
+const tiles: Record<string, { label: string; color: string }> = {
+  intune: { label: 'INT', color: '#1D5FD6' },
+  edge: { label: 'EDG', color: '#46648A' },
+  windows365: { label: 'W365', color: '#4A5FBF' },
+  windows: { label: 'WIN', color: '#157A8C' },
+  conditionalaccess: { label: 'CA', color: '#3D7BB5' },
+  powershell: { label: 'PS', color: '#2E6B4F' },
+  hyper-v: { label: 'HV', color: '#46648A' },
+  osdcloud: { label: 'OSD', color: '#0F3D73' },
+  homeassistant: { label: 'HA', color: '#2E6B4F' },
+  apple: { label: 'MAC', color: '#4A5FBF' },
+  security: { label: 'SEC', color: '#2E6B4F' },
+  microsoft: { label: 'MS', color: '#1D5FD6' },
+};
+const cat = categories?.[0] ?? 'intune';
+const tile = tiles[cat] ?? { label: 'IT', color: '#1D5FD6' };
+const mins = Math.max(2, Math.round((post.body?.split(/\s+/).length ?? 400) / 220));
+---
+<a class="card" href={`/${post.id}/`}>
+  <div class="thumb">
+    <div class="tile" style={`background:${tile.color}`}>{tile.label}</div>
+    <div class="tt">{title}</div>
+  </div>
+  <div class="body">
+    <h3>{title}</h3>
+    {description && <p>{description}</p>}
+    <div class="meta">{dateStr} · {mins} min read · {cat}</div>
+  </div>
+</a>
