@@ -26,7 +26,7 @@ jobs:
         with:
           node-version: 22
       - run: npm install
-      - name: Enable GitHub Pages (source: GitHub Actions)
+      - name: 'Enable Pages (source GitHub Actions)'
         id: configure
         uses: actions/configure-pages@v5
         with:
@@ -53,7 +53,7 @@ jobs:
     permissions:
       issues: write
     steps:
-      - name: Create issue with deploy failure logs
+      - name: 'Report deploy failure with log tail'
         uses: actions/github-script@v7
         with:
           script: |
