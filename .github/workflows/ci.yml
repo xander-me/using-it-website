@@ -74,7 +74,7 @@ jobs:
             // close previous open build-failure issues
             const { data: issues } = await github.rest.issues.listForRepo({
               owner: context.repo.owner, repo: context.repo.repo,
-              state: 'open', labels: 'build-failure',
+              state: 'open',
             });
             for (const i of issues) {
               await github.rest.issues.update({
@@ -87,5 +87,4 @@ jobs:
               repo: context.repo.repo,
               title: `Build failure on main (${context.sha.slice(0, 7)})`,
               body: `Automatic report from CI run ${context.runId}.\n\n${logs.join('\n\n')}`,
-              labels: ['build-failure'],
             });
