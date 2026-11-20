@@ -1,6 +1,6 @@
 # using-website
 
-**using-it.dk 2.0** — static blog & site, migrated from WordPress.
+**using-it.dk 2.0**: static blog & site, migrated from WordPress.
 
 Brand: "Nordisk Ro" (see `brand/BRAND-GUIDELINES.md`) · Planning: `project-playbook` #36 / #50 / #51.
 

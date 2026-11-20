@@ -12,7 +12,7 @@ wordpress_id: "557"
 original_url: "https://using-it.dk/build-microsoft-edge-managed-favorites-with-a-gui/"
 ---
 
-Managing browser favorites at scale sounds simple — until you actually try to do it.
+Managing browser favorites at scale sounds simple, until you actually try to do it.
 
 If you’ve ever configured Microsoft Edge Managed Favorites via Intune, Group Policy, or custom profiles on macOS, you already know the pain points:
 
@@ -249,7 +249,7 @@ Built-in **A–Z sorting**:
 
 - Reduces human error
 
-Sorting is optional — you stay in control.
+Sorting is optional: you stay in control.
 
 ## Design Philosophy
 

@@ -73,7 +73,7 @@ The Template configures essential deployment settings, such as:
 
 **2. OSDCloud Workspace: Customizing Each Deployment**
 
-Once you have your Template, you can create a **Workspace**—a working directory derived from the Template, where all deployment-specific configurations live. Workspaces allow for unique customizations per deployment, such as adding drivers, branding, or specific scripts.
+Once you have your Template, you can create a **Workspace**, a working directory derived from the Template, where all deployment-specific configurations live. Workspaces allow for unique customizations per deployment, such as adding drivers, branding, or specific scripts.
 
 **Why Use a Workspace?**
 

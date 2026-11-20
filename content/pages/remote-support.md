@@ -93,8 +93,8 @@ original_url: "https://using-it.dk/remote-support/"
     ### Download AnyDesk
       Download AnyDesk
     
-      <span class="uit-en">Click the button below for your operating system. AnyDesk requires **no installation** — just run the file directly.</span>
-      <span class="uit-da">Klik på knappen nedenfor for dit styresystem. AnyDesk kræver **ingen installation** — kør blot filen direkte.</span>
+      <span class="uit-en">Click the button below for your operating system. AnyDesk requires **no installation**: just run the file directly.</span>
+      <span class="uit-da">Klik på knappen nedenfor for dit styresystem. AnyDesk kræver **ingen installation**: kør blot filen direkte.</span>
     
 
   2
@@ -111,8 +111,8 @@ original_url: "https://using-it.dk/remote-support/"
     ### Accept the connection
       Acceptér forbindelsen
     
-      <span class="uit-en">I'll initiate the session from my end. A prompt will appear asking you to **Accept** the incoming connection — click it to grant access. You can disconnect at any time by closing AnyDesk.</span>
-      <span class="uit-da">Jeg starter sessionen fra min side. Der vises en boks, hvor du bliver bedt om at klikke **Acceptér** — klik på den for at give mig adgang. Du kan afbryde forbindelsen til enhver tid ved at lukke AnyDesk.</span>
+      <span class="uit-en">I'll initiate the session from my end. A prompt will appear asking you to **Accept** the incoming connection: click it to grant access. You can disconnect at any time by closing AnyDesk.</span>
+      <span class="uit-da">Jeg starter sessionen fra min side. Der vises en boks, hvor du bliver bedt om at klikke **Acceptér**: klik på den for at give mig adgang. Du kan afbryde forbindelsen til enhver tid ved at lukke AnyDesk.</span>
     
 
 ```

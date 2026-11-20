@@ -1,6 +1,6 @@
 @import "./tokens.css";
 
-/* Self-host fonts via @fontsource — add to package.json when online:
+/* Self-host fonts via @fontsource: add to package.json when online:
    "@fontsource-variable/inter", "@fontsource/jetbrains-mono" */
 @font-face {
   font-family: "Inter";
