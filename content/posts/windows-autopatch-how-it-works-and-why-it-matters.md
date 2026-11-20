@@ -5,9 +5,9 @@ pubDate: "2023-11-18 19:59:57"
 updatedDate: "2025-11-28 15:03:00"
 slug: "windows-autopatch-how-it-works-and-why-it-matters"
 draft: false
-categories:
+categories: []
   - "intune"
-tags:
+tags: []
 wordpress_id: "312"
 original_url: "https://using-it.dk/windows-autopatch-how-it-works-and-why-it-matters/"
 ---

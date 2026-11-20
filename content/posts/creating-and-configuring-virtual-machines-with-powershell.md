@@ -5,10 +5,10 @@ pubDate: "2023-09-19 09:42:19"
 updatedDate: "2025-11-22 21:07:58"
 slug: "creating-and-configuring-virtual-machines-with-powershell"
 draft: false
-categories:
+categories: []
   - "hyper-v"
   - "powershell"
-tags:
+tags: []
 wordpress_id: "165"
 original_url: "https://using-it.dk/creating-and-configuring-virtual-machines-with-powershell/"
 ---

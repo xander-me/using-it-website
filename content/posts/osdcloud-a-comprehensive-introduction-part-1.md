@@ -5,10 +5,10 @@ pubDate: "2024-11-01 20:15:53"
 updatedDate: "2025-11-28 15:52:44"
 slug: "osdcloud-a-comprehensive-introduction-part-1"
 draft: true
-categories:
+categories: []
   - "osdcloud"
   - "powershell"
-tags:
+tags: []
 wordpress_id: "363"
 original_url: "https://using-it.dk/osdcloud-a-comprehensive-introduction-part-1/"
 ---

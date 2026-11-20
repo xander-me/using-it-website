@@ -1,6 +1,8 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
+const strList = z.array(z.string()).nullish().transform((v) => v ?? []);
+
 const posts = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './content/posts' }),
   schema: z.object({
@@ -10,8 +12,8 @@ const posts = defineCollection({
     updatedDate: z.coerce.date().optional(),
     slug: z.string(),
     draft: z.boolean().default(false),
-    categories: z.array(z.string()).default([]),
-    tags: z.array(z.string()).default([]),
+    categories: strList,
+    tags: strList,
     wordpress_id: z.string().optional(),
     original_url: z.string().optional(),
   }),

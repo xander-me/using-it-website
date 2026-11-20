@@ -5,9 +5,9 @@ pubDate: "2025-11-14 13:15:34"
 updatedDate: "2025-11-23 17:09:31"
 slug: "conditional-access-a-persona-based-framework-for-scalable-access-control"
 draft: false
-categories:
+categories: []
   - "conditionalaccess"
-tags:
+tags: []
 wordpress_id: "378"
 original_url: "https://using-it.dk/conditional-access-a-persona-based-framework-for-scalable-access-control/"
 ---

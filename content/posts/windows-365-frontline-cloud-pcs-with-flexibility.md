@@ -5,9 +5,9 @@ pubDate: "2025-11-14 14:06:31"
 updatedDate: "2025-11-28 10:35:53"
 slug: "windows-365-frontline-cloud-pcs-with-flexibility"
 draft: false
-categories:
+categories: []
   - "windows-365"
-tags:
+tags: []
 wordpress_id: "391"
 original_url: "https://using-it.dk/windows-365-frontline-cloud-pcs-with-flexibility/"
 ---

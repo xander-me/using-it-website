@@ -5,10 +5,10 @@ pubDate: "2026-05-11 10:03:31"
 updatedDate: "2026-05-11 10:20:02"
 slug: "microsoft-edge-profiles-not-sorting-alphabetically"
 draft: false
-categories:
+categories: []
   - "edge"
   - "microsoft"
-tags:
+tags: []
 wordpress_id: "598"
 original_url: "https://using-it.dk/microsoft-edge-profiles-not-sorting-alphabetically/"
 ---

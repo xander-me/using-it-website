@@ -5,9 +5,9 @@ pubDate: "2023-10-06 17:41:03"
 updatedDate: "2025-11-28 15:54:09"
 slug: "home-assistant-a-brief-overview-and-installation-guide"
 draft: true
-categories:
+categories: []
   - "home-assistant"
-tags:
+tags: []
 wordpress_id: "303"
 original_url: "https://using-it.dk/home-assistant-a-brief-overview-and-installation-guide/"
 ---

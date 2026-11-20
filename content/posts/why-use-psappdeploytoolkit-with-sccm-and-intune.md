@@ -5,10 +5,10 @@ pubDate: "2023-09-26 13:33:21"
 updatedDate: "2025-11-28 15:04:38"
 slug: "why-use-psappdeploytoolkit-with-sccm-and-intune"
 draft: true
-categories:
+categories: []
   - "intune"
   - "powershell"
-tags:
+tags: []
 wordpress_id: "240"
 original_url: "https://using-it.dk/why-use-psappdeploytoolkit-with-sccm-and-intune/"
 ---
