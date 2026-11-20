@@ -5,7 +5,7 @@ pubDate: "2024-11-01 20:54:56"
 updatedDate: "2025-11-28 15:52:44"
 slug: "advanced-workspace-customization-part-3"
 draft: true
-categories: []
+categories:
   - "osdcloud"
   - "powershell"
 tags: []

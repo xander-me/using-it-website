@@ -5,7 +5,7 @@ pubDate: "2025-11-14 13:15:34"
 updatedDate: "2025-11-23 17:09:31"
 slug: "conditional-access-a-persona-based-framework-for-scalable-access-control"
 draft: false
-categories: []
+categories:
   - "conditionalaccess"
 tags: []
 wordpress_id: "378"

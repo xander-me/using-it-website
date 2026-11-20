@@ -5,7 +5,7 @@ pubDate: "2023-09-26 10:11:46"
 updatedDate: "2023-10-02 08:02:35"
 slug: "managed-appleid-or-not"
 draft: false
-categories: []
+categories:
   - "apple"
   - "intune"
 tags: []

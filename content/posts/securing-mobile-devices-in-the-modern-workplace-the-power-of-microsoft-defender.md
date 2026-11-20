@@ -5,7 +5,7 @@ pubDate: "2023-11-14 19:34:56"
 updatedDate: "2025-11-28 15:53:21"
 slug: "securing-mobile-devices-in-the-modern-workplace-the-power-of-microsoft-defender"
 draft: true
-categories: []
+categories:
   - "intune"
 tags: []
 wordpress_id: "307"

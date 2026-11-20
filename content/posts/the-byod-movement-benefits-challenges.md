@@ -5,7 +5,7 @@ pubDate: "2023-09-29 11:39:36"
 updatedDate: "2025-11-28 15:54:29"
 slug: "the-byod-movement-benefits-challenges"
 draft: true
-categories: []
+categories:
   - "intune"
 tags: []
 wordpress_id: "285"

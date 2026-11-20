@@ -5,7 +5,7 @@ pubDate: "2025-11-22 18:45:36"
 updatedDate: "2026-04-27 20:17:50"
 slug: "why-are-you-still-using-google-chrome-as-your-default-browser"
 draft: false
-categories: []
+categories:
   - "intune"
 tags: []
 wordpress_id: "407"

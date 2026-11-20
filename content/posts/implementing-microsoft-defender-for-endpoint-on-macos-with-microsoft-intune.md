@@ -5,7 +5,7 @@ pubDate: "2023-11-20 19:10:40"
 updatedDate: "2025-11-28 15:52:44"
 slug: "implementing-microsoft-defender-for-endpoint-on-macos-with-microsoft-intune"
 draft: true
-categories: []
+categories:
   - "intune"
 tags: []
 wordpress_id: "316"

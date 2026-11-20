@@ -5,7 +5,7 @@ pubDate: "2025-11-14 14:00:16"
 updatedDate: "2025-11-28 10:54:35"
 slug: "from-sccm-to-intune-5-key-lessons"
 draft: false
-categories: []
+categories:
   - "intune"
 tags: []
 wordpress_id: "386"

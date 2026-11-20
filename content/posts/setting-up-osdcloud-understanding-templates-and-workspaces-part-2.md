@@ -5,7 +5,7 @@ pubDate: "2024-11-01 20:44:25"
 updatedDate: "2025-11-28 15:52:44"
 slug: "setting-up-osdcloud-understanding-templates-and-workspaces-part-2"
 draft: true
-categories: []
+categories:
   - "osdcloud"
   - "powershell"
 tags: []
