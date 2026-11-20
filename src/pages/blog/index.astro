@@ -8,7 +8,7 @@ const all = (await getCollection('posts', ({ data }) => import.meta.env.PROD ? !
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const latest = all.slice(-4);
 ---
-<Base title="Articles — using-IT">
+<Base title="Articles — Using-IT">
   <div class="wrap" style="padding-top: 40px;">
     <div class="section-label" style="margin-top: 0;"><h2>All articles ({all.length})</h2></div>
     <div class="post-list">
