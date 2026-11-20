@@ -4,6 +4,7 @@ description: ""
 pubDate: "2025-11-14 14:06:31"
 updatedDate: "2025-11-28 10:35:53"
 slug: "windows-365-frontline-cloud-pcs-with-flexibility"
+image: "/images/windows-365-frontline-cloud-pcs-with-flexibility.svg"
 draft: false
 categories:
   - "windows-365"
