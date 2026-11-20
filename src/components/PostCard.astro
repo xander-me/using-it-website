@@ -19,14 +19,17 @@ const tiles: Record<string, { label: string; color: string }> = {
   security: { label: 'SEC', color: '#2E6B4F' },
   microsoft: { label: 'MS', color: '#1D5FD6' },
 };
+const image = 'image' in post.data ? post.data.image : undefined;
 const cat = categories?.[0] ?? 'intune';
 const tile = tiles[cat] ?? { label: 'IT', color: '#1D5FD6' };
 const mins = Math.max(2, Math.round((post.body?.split(/\s+/).length ?? 400) / 220));
 ---
 <a class="card" href={`/${post.id}/`}>
-  <div class="thumb">
-    <div class="tile" style={`background:${tile.color}`}>{tile.label}</div>
-    <div class="tt">{title}</div>
+  <div class:list={["thumb", { "has-img": image }]}>
+    {image ? <img class="thumb-img" src={image} alt="" loading="lazy" /> : (<>
+      <div class="tile" style={`background:${tile.color}`}>{tile.label}</div>
+      <div class="tt">{title}</div>
+    </>)}
   </div>
   <div class="body">
     <h3>{title}</h3>

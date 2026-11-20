@@ -11,6 +11,7 @@ const dateStr = d.toLocaleDateString('en-GB', { year: 'numeric', month: 'short',
 const upd = updatedDate && new Date(updatedDate).getTime() !== d.getTime()
   ? ' · updated ' + new Date(updatedDate).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' })
   : '';
+const image = 'image' in entry.data ? entry.data.image : undefined;
 const cat = 'categories' in entry.data ? entry.data.categories?.join(' · ') ?? 'Article' : 'Page';
 const mins = entry.body ? Math.max(2, Math.round(entry.body.split(/\s+/).length / 220)) : null;
 ---
@@ -19,6 +20,7 @@ const mins = entry.body ? Math.max(2, Math.round(entry.body.split(/\s+/).length 
   <h1>{title}</h1>
   <div class="article-meta">{dateStr}{upd} · by Alexander{mins ? ` · ${mins} min read` : ''}</div>
 </section>
+{image && <img class="article-hero-img" src={image} alt="" />}
 <div class="wrap prose" id="article">
   <Content />
   <LicensingCta compact={true} />

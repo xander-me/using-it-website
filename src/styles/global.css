@@ -127,6 +127,9 @@ a:hover { color: var(--color-accent-hover); }
 }
 .tile { min-width: 40px; height: 40px; border-radius: var(--radius-btn); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; }
 .card .thumb .tt { font-size: 0.8rem; font-weight: 650; color: var(--color-text-strong); line-height: 1.35; }
+.card .thumb.has-img { padding: 0; align-items: stretch; }
+.card .thumb .thumb-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.article-hero-img { width: 100%; margin-top: var(--space-6); border-radius: var(--radius-panel); border: 1px solid var(--color-border); display: block; }
 .card .body { padding: var(--space-3) var(--space-4) var(--space-4); }
 .card .body h3 { font-size: 1rem; font-weight: 680; line-height: 1.35; letter-spacing: -0.01em; color: var(--color-text-strong); margin-bottom: var(--space-2); }
 .card .body p { font-size: 0.85rem; line-height: 1.5; color: var(--color-text); }
