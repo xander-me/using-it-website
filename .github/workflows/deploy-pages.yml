@@ -26,11 +26,9 @@ jobs:
         with:
           node-version: 22
       - run: npm install
-      - name: 'Enable Pages (source GitHub Actions)'
+      - name: 'Check Pages site is enabled'
         id: configure
         uses: actions/configure-pages@v5
-        with:
-          enablement: true
       - name: Build with preview base path
         run: npx astro build
         env:
@@ -65,12 +63,9 @@ jobs:
             const failed = run.jobs.filter(j => j.conclusion === 'failure');
             const logs = [];
             for (const j of failed) {
-              const { data } = await github.rest.actions.getJobLogs({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                job_id: j.id,
-              });
-              const tail = data.split('\n').slice(-60).join('\n');
+              const res = await github.request('GET ' + j.url + '/logs');
+              const text = typeof res.data === 'string' ? res.data : JSON.stringify(res.data);
+              const tail = text.split('\n').slice(-60).join('\n');
               logs.push('## ' + j.name + '\n\n```\n' + tail + '\n```');
             }
             await github.rest.issues.create({
