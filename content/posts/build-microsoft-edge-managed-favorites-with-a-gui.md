@@ -4,6 +4,7 @@ description: ""
 pubDate: "2025-12-20 14:46:47"
 updatedDate: "2025-12-29 10:04:49"
 slug: "build-microsoft-edge-managed-favorites-with-a-gui"
+image: "/images/build-microsoft-edge-managed-favorites-with-a-gui.svg"
 draft: false
 categories:
   - "intune"

@@ -4,6 +4,7 @@ description: ""
 pubDate: "2026-05-11 10:03:31"
 updatedDate: "2026-05-11 10:20:02"
 slug: "microsoft-edge-profiles-not-sorting-alphabetically"
+image: "/images/microsoft-edge-profiles-not-sorting-alphabetically.svg"
 draft: false
 categories:
   - "edge"
