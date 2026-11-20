@@ -1,4 +1,4 @@
-# Using-IT Brand Guidelines — v1.0
+# Using-IT Brand Guidelines - v1.0
 
 **Retning:** Nordisk Ro · hvid, luftig, én blå accent.
 **Godkendt:** 19. nov 2026. Gyldig for website, thumbnails, mail-signatur og fremtidige materialer.
@@ -26,7 +26,7 @@ Using-IT er et **roligt, teknisk troværdigt, skandinavisk publisher-mærke**.
 | `--color-accent` | `#1D5FD6` | 29,95,214 | links, primærknap, logo-flise, "using-" i wordmark |
 | `--color-accent-hover` | `#174AA8` | 23,74,168 | hover på accent |
 | `--color-accent-subtle` | `#E8F0FC` | 232,240,252 | badge-baggrunde, CTA-blok |
-| `--color-warn` | `#B4611C` | kun til advarsels-callouts — den eneste sekundære signal-farve | |
+| `--color-warn` | `#B4611C` | kun til advarsels-callouts: den eneste sekundære signal-farve | |
 
 ### Dark mode
 
@@ -60,7 +60,7 @@ Using-IT er et **roligt, teknisk troværdigt, skandinavisk publisher-mærke**.
 ### Kontrastregler (WCAG 2.2 AA)
 
 - Brødtekst `#2C3648` på `#FFFFFF`: kontrast 11,3:1 ✔
-- Accent `#1D5FD6` på hvid: 5,0:1 — kun til links/knapper/ikoner, aldrig lang brødtekst.
+- Accent `#1D5FD6` på hvid: 5,0:1; kun til links/knapper/ikoner, aldrig lang brødtekst.
 - Muted `#7C8AA0`: kun ikke-væsenlig tekst (metadata, captions).
 
 ## 3. Typografi
@@ -70,9 +70,11 @@ Using-IT er et **roligt, teknisk troværdigt, skandinavisk publisher-mærke**.
 | UI + brødtekst | **Inter Variable** (OFL, self-hostet via @fontsource) | `system-ui, -apple-system, "Segoe UI", sans-serif` |
 | Kode | **JetBrains Mono** (OFL) | `ui-monospace, "SF Mono", Menlo, Consolas, monospace` |
 
+**Tegnsætningsregler:** Em-dash er strengt forbudt i alt indhold. Brug `-` i prosa, kolon eller komma hvor teksten ellers ville have et em-dash, og `·` som separator i titler og meta-linjer.
+
 Skala: H1 32-38px/700/1.2 · H2 24px/700 · H3 20px/600 · H4 17px/600 · brødtekst **17-19px, linjehøjde 1.6-1.65, maks. 70 tegn** · meta 12px uppercase ls 0.05em · kode 13.5px.
 
-Regel: font-licenser er OFL — ingen betalte skrifter, ingen CDN-afhængighed (privacy).
+Regel: font-licenser er OFL: ingen betalte skrifter, ingen CDN-afhængighed (privacy).
 
 ## 4. Logo og wordmark
 
