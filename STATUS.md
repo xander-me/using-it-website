@@ -27,9 +27,13 @@ https://using-it.dk still runs the original WordPress site. Cutover to this Astr
 
 See [docs/phase0-discovery-2026-11-22.md](docs/phase0-discovery-2026-11-22.md), [docs/url-inventory-2026-11-22.csv](docs/url-inventory-2026-11-22.csv) (40 URLs, all sitemap URLs 200), [docs/media-inventory-2026-11-22.csv](docs/media-inventory-2026-11-22.csv) (28 of 34 media via public REST). Findings: WP 7.1.5 on Simply.com Apache, Rank Math SEO, theme elite-blog, **no analytics tags or cookies on public pages**, xmlrpc disabled (405), `/timecalc/timecalc.html` + `/timecalc/BO.html` live (200) and protected, `/tools/` draft 403. All 9 published posts + 6 pages reconciled against `docs/migration-map.csv`; added the missing published page `blogposts` (WP id 124). Repeatable with `python3 scripts/inventory_site.py`.
 
+## Migration readiness (2026-11-22) — see docs/MIGRATION.md + docs/deploy-runbook.md
+
+Content fidelity verified (9/9 posts 92–100% word coverage), all live URLs exist as identical routes in the build, 15 media files bundled at identical URLs, preview builds noindex, deploy runbook written (additive-only deploy, `/timecalc/` protected, rollback by rename).
+
 ## Blockers / next action
 
-Phase 0 public recon is done; the remaining Phase 0 items need inputs only Alexander has: (1) WordPress admin export (WXR + DB/uploads backup) for drafts, Rank Math SEO fields and the 6 non-public media items, (2) Search Console access for the traffic/indexing baseline (#51), (3) Simply.com control-panel/SFTP details for the deploy path, `.htaccess`/301 capability and staging option. Next action: Alexander provides those; then verify the recoverable backup (Gate 0) and create the #51 content-review batches before any production change.
+Everything left needs Alexander's inputs: (1) **WP export (WXR) + full backup, restore-tested — Gate 0**, also unlocks drafts, Rank Math SEO fields and the 6 non-public media items; (2) **Simply.com control panel + SFTP/SSH** for staging subdomain and the deploy path; (3) **Search Console** access for verification + traffic baseline (#51); (4) **Gate 6 approval** for the production cutover per docs/deploy-runbook.md. Next action: provide those; then run Stage 1 staging on preview.using-it.dk and the #51 content-review batches before any production change.
 
 ## Non-negotiables (from #50 / README)
 

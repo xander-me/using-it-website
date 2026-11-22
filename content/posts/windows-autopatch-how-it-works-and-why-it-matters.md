@@ -32,7 +32,7 @@ Autopatch uses four deployment rings - **Test**,&nbsp;**First**,&nbsp;**Fast**, 
 
 - **Broad**: The remainder of the organization.
 
-<figure class="wp-block-image size-large">![](https://using-it.dk/wp-content/uploads/2023/11/Screenshot-2025-11-28-at-14.34.33-1024x221.png)</figure>
+<figure class="wp-block-image size-large">![](/wp-content/uploads/2023/11/Screenshot-2025-11-28-at-14.34.33-1024x221.png)</figure>
 
 ### Phased Rollout with Built-In Intelligence
 
@@ -46,7 +46,7 @@ Autopatch includes pause conditions and rollback logic. If devices in a ring rep
 
 Autopatch manages quality and feature updates, as well as select driver and firmware updates. IT admins can define policies for how these updates are approved and deployed, minimizing unexpected hardware conflicts.
 
-<figure class="wp-block-image size-large is-style-default">![](https://using-it.dk/wp-content/uploads/2023/11/Screenshot-2025-11-28-at-14.30.25-1024x682.png)</figure>
+<figure class="wp-block-image size-large is-style-default">![](/wp-content/uploads/2023/11/Screenshot-2025-11-28-at-14.30.25-1024x682.png)</figure>
 
 ### Integration with Intune and Entra ID
 

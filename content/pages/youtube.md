@@ -9,7 +9,7 @@ wordpress_id: "373"
 original_url: "https://using-it.dk/youtube/"
 ---
 
-<figure class="wp-block-image size-large">![](https://using-it.dk/wp-content/uploads/2025/08/image-1024x512.png)</figure>
+<figure class="wp-block-image size-large">![](/wp-content/uploads/2025/08/image-1024x512.png)</figure>
 
 E.25.03: In this video we talk about how to convert existing PCs that is managed from SCCM – into a Windows Autopilot PC from a Task Sequence.
 

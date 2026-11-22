@@ -16,7 +16,7 @@ Conditional Access is not just another security feature in Microsoft’s portfol
 
 This article outlines a practical, persona-based framework I use when implementing Microsoft Entra Conditional Access with clients. The goal is to create a clear, maintainable, and future-proof access model that minimizes risk without compromising productivity.
 
-<figure class="wp-block-image size-full is-resized">![](https://using-it.dk/wp-content/uploads/2025/11/image.png)</figure>
+<figure class="wp-block-image size-full is-resized">![](/wp-content/uploads/2025/11/image.png)</figure>
 
 ### Step 1: Start with a Global Deny-by-Default Policy
 

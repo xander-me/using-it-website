@@ -12,10 +12,10 @@ original_url: "https://using-it.dk/about-me/"
 ## Certifications
 
 <figure class="wp-block-gallery has-nested-images columns-default is-cropped">
-<figure class="wp-block-image size-full is-style-default">![](https://using-it.dk/wp-content/uploads/2026/01/twitter_thumb_201604_microsoft365-modern-desktop-administrator-associate-600x600-1.png)</figure>
+<figure class="wp-block-image size-full is-style-default">![](/wp-content/uploads/2026/01/twitter_thumb_201604_microsoft365-modern-desktop-administrator-associate-600x600-1.png)</figure>
 </figure>
 
-<figure class="wp-block-image aligncenter size-full is-resized">[![](https://using-it.dk/wp-content/uploads/2026/01/ms_transcript-300x76-1.png)](https://learn.microsoft.com/en-gb/users/alexanderchristensen-1812/transcript/dznwzij55elkrw3?tab=credentials-tab)</figure>
+<figure class="wp-block-image aligncenter size-full is-resized">[![](/wp-content/uploads/2026/01/ms_transcript-300x76-1.png)](https://learn.microsoft.com/en-gb/users/alexanderchristensen-1812/transcript/dznwzij55elkrw3?tab=credentials-tab)</figure>
 
 ## About
 
