@@ -1,0 +1,27 @@
+# using-it-website — current handoff
+
+Updated: 2026-11-22. Owner: Alexander. Context: Work (Using-IT brand; planning in [project-playbook #36](https://github.com/xander-me/project-playbook/issues/36), [#50](https://github.com/xander-me/project-playbook/issues/50), [#51](https://github.com/xander-me/project-playbook/issues/51)).
+
+This repository is the sole working home for the using-it.dk 2.0 Astro site. Read [README.md](README.md), [AGENTS.md](AGENTS.md) and [docs/MIGRATION.md](docs/MIGRATION.md) first. Nothing here authorizes a production deploy or LinkedIn autoposting by itself.
+
+## Current state (verified 2026-11-22)
+
+- **Preview is live:** https://xander-me.github.io/using-it-website/ — GitHub Pages, source = GitHub Actions. Home, /blog/, /rss.xml and /sitemap-index.xml all return 200.
+- **Deploy is green:** last deploy run [44741423172](https://github.com/xander-me/using-it-website/actions/runs/44741423172) succeeded 2026-11-20 13:06 UTC (8ca0bda). The six "Pages deploy failure on main" issues (#1–#6) were stale reports from before Pages was enabled; closed 2026-11-22. Workflows now auto-close stale failure reports on the next green main run, and only ever touch their own report titles.
+- **Build verified locally 2026-11-22:** `npm install && npm run build` → 20 pages; CI internal-link check logic run against `dist/` → 0 broken links.
+- **Content migrated so far:** 17 posts + 6 pages in `content/`; [docs/migration-map.csv](docs/migration-map.csv) (22 rows) maps wordpress_id → content_id → original/new URL; [docs/media-list.txt](docs/media-list.txt) tracks media.
+
+## Production status
+
+https://using-it.dk still runs the original WordPress site. Cutover to this Astro build is **planned but not authorized**; it follows the phase gates in project-playbook #50 (Phase 0 inventory → … → Gate 6 production acceptance).
+
+## Blockers / next action
+
+Phase 0 needs inputs only Alexander has: WordPress export (WXR and/or API) + full backup, complete live URL/asset inventory, Simply.com deploy-path and credential review (SFTP/SSH, `.htaccess`/301 capability), and the analytics/Search Console baseline (#51). Next action: Alexander provides the WP export and Simply.com access details; then run the non-destructive discovery in #51 and create prioritized content-review batches before any production change.
+
+## Non-negotiables (from #50 / README)
+
+- Never deploy destructively over `/timecalc/` or sibling tools on Simply.com.
+- Original public article URLs stay reachable (server-level 301 where changed).
+- No automatic LinkedIn posting; no production deploy without explicit approval.
+- Deploy credentials only as narrowly scoped GitHub Actions secrets; no secrets in the repo.

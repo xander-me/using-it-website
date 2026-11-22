@@ -71,12 +71,14 @@ jobs:
               const tail = data.split('\n').slice(-80).join('\n');
               logs.push(`## ${j.name}\n\n\`\`\`\n${tail}\n\`\`\``);
             }
-            // close previous open build-failure issues
+            // close previous open build-failure issues (only our own reports,
+            // never unrelated feature/bug issues)
             const { data: issues } = await github.rest.issues.listForRepo({
               owner: context.repo.owner, repo: context.repo.repo,
               state: 'open',
             });
             for (const i of issues) {
+              if (!i.title.startsWith('Build failure on main')) continue;
               await github.rest.issues.update({
                 owner: context.repo.owner, repo: context.repo.repo,
                 issue_number: i.number, state: 'closed',
@@ -88,3 +90,29 @@ jobs:
               title: `Build failure on main (${context.sha.slice(0, 7)})`,
               body: `Automatic report from CI run ${context.runId}.\n\n${logs.join('\n\n')}`,
             });
+  close-stale-failure-issues:
+    needs: build
+    if: success() && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Close resolved build-failure reports
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo, state: 'open',
+            });
+            for (const i of issues) {
+              if (!i.title.startsWith('Build failure on main')) continue;
+              await github.rest.issues.createComment({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: i.number,
+                body: `Build on main is green again (run ${context.runId}, ${context.sha.slice(0, 7)}). Closing this stale failure report.`,
+              });
+              await github.rest.issues.update({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: i.number, state: 'closed',
+              });
+            }

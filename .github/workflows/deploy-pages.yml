@@ -68,9 +68,47 @@ jobs:
               const tail = text.split('\n').slice(-60).join('\n');
               logs.push('## ' + j.name + '\n\n```\n' + tail + '\n```');
             }
+            // close previous deploy-failure reports (only our own, never unrelated issues)
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo, state: 'open',
+            });
+            for (const i of issues) {
+              if (!i.title.startsWith('Pages deploy failure on main')) continue;
+              await github.rest.issues.update({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: i.number, state: 'closed',
+              });
+            }
             await github.rest.issues.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
               title: 'Pages deploy failure on main',
               body: 'Deploy to GitHub Pages failed. Log tails:\n\n' + logs.join('\n\n'),
             });
+
+  close-stale-deploy-failures:
+    needs: deploy
+    if: success() && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Close resolved Pages deploy-failure reports
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo, state: 'open',
+            });
+            for (const i of issues) {
+              if (!i.title.startsWith('Pages deploy failure on main')) continue;
+              await github.rest.issues.createComment({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: i.number,
+                body: `Pages deploy on main succeeded again (run ${context.runId}, ${context.sha.slice(0, 7)}) — preview live at https://xander-me.github.io/using-it-website/. Closing this stale failure report.`,
+              });
+              await github.rest.issues.update({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: i.number, state: 'closed',
+              });
+            }
