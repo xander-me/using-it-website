@@ -15,9 +15,13 @@ This repository is the sole working home for the using-it.dk 2.0 Astro site. Rea
 
 https://using-it.dk still runs the original WordPress site. Cutover to this Astro build is **planned but not authorized**; it follows the phase gates in project-playbook #50 (Phase 0 inventory → … → Gate 6 production acceptance).
 
+## Editorial flow — 2026-11-22
+
+[docs/editorial-flow.md](docs/editorial-flow.md) implements the linkedin-content#2 contract: idea issue → linkedin-content stages → approved draft synced here via PR (`npm run new` scaffolds `content_id`/`source_issue`/`linkedin_post`/`review_status`/`publish_status` frontmatter) → merge = preview publish; LinkedIn stays manual copy/paste (no autopost); `07-published` ledger tracks real URLs. Schema extended in `src/content.config.ts`.
+
 ## SEO & analytics decision — 2026-11-22
 
-[ADR-001](docs/adr-001-seo-analytics.md): technical SEO only (sitemap, RSS, robots, canonical, OG/Twitter cards, JSON-LD Article, llms.txt — implemented and verified in the build). Traffic stats: Search Console + GoAccess on Simply.com logs (zero cookies, no banner, 0 DKK); optional later self-hosted cookie-less Umami on the home Proxmox box; **no analytics SaaS, no tracker snippet shipped** (needs explicit approval per #50/#51).
+[ADR-001](docs/adr-001-seo-analytics.md): technical SEO only (sitemap, RSS, robots, canonical, OG/Twitter cards, JSON-LD Article, llms.txt — implemented and verified in the build). Traffic stats: Search Console + GoAccess on Simply.com logs (zero cookies, no banner, 0 DKK); plus **self-hosted Umami on the home Proxmox box selected for the per-article dashboard** (snippet env-gated in Base.astro — off until `PUBLIC_UMAMI_SRC`/`PUBLIC_UMAMI_WEBSITE_ID` are set and the production deploy approves); **no analytics SaaS, no tracker shipped by default** (per #50/#51).
 
 ## Phase 0 discovery (public, non-destructive) — done 2026-11-22
 

@@ -28,10 +28,17 @@ description: ""
 pubDate: "${now}"
 slug: "${slug}"
 draft: true
+publish_status: "draft"
 categories:
   - "intune"
 tags: []
 original_url: ""
+# Editorial pipeline (docs/editorial-flow.md, linkedin-content#2):
+content_id: ""        # stable ID, e.g. uit-2026-001 — shared with linkedin-content stages
+source_issue: ""      # idea issue URL, e.g. https://github.com/xander-me/project-playbook/issues/NN
+language: "en"        # da | en
+linkedin_post: ""     # path in linkedin-content/05-linkedin-posts/<lang>/<content_id>.md
+review_status: "idea" # idea -> planned -> challenge_review -> drafted -> technical_review -> approved
 ---
 
 Write the article here. Publishing checklist (project-playbook#36):
@@ -40,9 +47,9 @@ Write the article here. Publishing checklist (project-playbook#36):
 - [ ] Lead paragraph answers the question in plain language
 - [ ] Code tested; screenshots redacted; alt text on all images
 - [ ] Version/product names verified against current Microsoft docs
-- [ ] Thumbnail generated (16:9, brand tokens)
-- [ ] LinkedIn draft written and linked below
-- [ ] Human approval before draft: false
+- [ ] Thumbnail generated (16:9, brand tokens from brand/BRAND-GUIDELINES.md)
+- [ ] LinkedIn derivative drafted in linkedin-content (05-linkedin-posts), path set in frontmatter
+- [ ] review_status: approved and human approval before draft: false / publish_status: published
 `;
 
 mkdirSync(dir, { recursive: true });

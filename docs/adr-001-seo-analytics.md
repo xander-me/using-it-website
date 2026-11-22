@@ -21,10 +21,10 @@ Discovery (docs/phase0-discovery-2026-11-22.md) showed the live WordPress site h
 | --- | --- | --- | --- | --- |
 | A. Search Console only | Impressions, clicks, queries, coverage | Free | None | **Baseline — yes** |
 | B. Log-based (GoAccess on Simply.com Apache logs) | Pageviews, referrers, 404s from server logs | Free | None — nothing added to pages | **Yes, from launch** |
-| C. Self-hosted cookie-less analytics (Umami/Plausible self-hosted on the home Proxmox box, exposed as `stats.using-it.dk`) | Real-time dashboard, events | Free (own hardware) | No cookies, no banner, but a JS snippet and a home-server dependency for a public site | **Optional later** — only if A+B prove insufficient; requires explicit approval + availability plan |
+| C. Self-hosted cookie-less analytics (Umami on the home Proxmox box in `home-media`, exposed as `stats.using-it.dk`) | Real-time dashboard incl. **per-article page views** (what is read most) | Free (own hardware) | No cookies, no banner; JS snippet + home-server availability dependency | **Selected (2026-11-22, Alexander wants visible per-article stats)** — infrastructure task on home-media, enable snippet at production deploy |
 | D. Analytics SaaS (Plausible Cloud, GA, etc.) | Dashboard | Paid or data-for-service | Third-party data transfer | **Rejected** — conflicts with 0 DKK target and the privacy-first stance in #51 |
 
-**No tracker snippet is shipped in this change.** The site sets no cookies and loads no third-party scripts, so no consent banner is required (GDPR). If option C is later approved, add the snippet in `Base.astro` behind an explicit build flag and record it here.
+**Tracker snippet is wired but inert:** `Base.astro` renders the Umami script only when `PUBLIC_UMAMI_SRC` + `PUBLIC_UMAMI_WEBSITE_ID` are set at build time — unset by default, so nothing ships until the self-hosted instance exists and the production deploy approves it. The site sets no cookies and loads no third-party scripts by default, so no consent banner is required (GDPR).
 
 ## Consequences
 
