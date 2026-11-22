@@ -12,6 +12,7 @@ wordpress_id,content_id,original_url,new_url,wp_status,type
 363,osdcloud-a-comprehensive-introduction-part-1,https://using-it.dk/osdcloud-a-comprehensive-introduction-part-1/,(draft),draft,post
 366,setting-up-osdcloud-understanding-templates-and-workspaces-part-2,https://using-it.dk/setting-up-osdcloud-understanding-templates-and-workspaces-part-2/,(draft),draft,post
 368,advanced-workspace-customization-part-3,https://using-it.dk/advanced-workspace-customization-part-3/,(draft),draft,post
+124,blogposts,https://using-it.dk/blogposts/,/blogposts/,publish,page
 373,youtube,https://using-it.dk/youtube/,/youtube/,publish,page
 564,tools-2,https://using-it.dk/tools-2/,/tools-2/,publish,page
 586,remote-support,https://using-it.dk/remote-support/,/remote-support/,publish,page

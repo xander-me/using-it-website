@@ -15,9 +15,13 @@ This repository is the sole working home for the using-it.dk 2.0 Astro site. Rea
 
 https://using-it.dk still runs the original WordPress site. Cutover to this Astro build is **planned but not authorized**; it follows the phase gates in project-playbook #50 (Phase 0 inventory → … → Gate 6 production acceptance).
 
+## Phase 0 discovery (public, non-destructive) — done 2026-11-22
+
+See [docs/phase0-discovery-2026-11-22.md](docs/phase0-discovery-2026-11-22.md), [docs/url-inventory-2026-11-22.csv](docs/url-inventory-2026-11-22.csv) (40 URLs, all sitemap URLs 200), [docs/media-inventory-2026-11-22.csv](docs/media-inventory-2026-11-22.csv) (28 of 34 media via public REST). Findings: WP 7.1.5 on Simply.com Apache, Rank Math SEO, theme elite-blog, **no analytics tags or cookies on public pages**, xmlrpc disabled (405), `/timecalc/timecalc.html` + `/timecalc/BO.html` live (200) and protected, `/tools/` draft 403. All 9 published posts + 6 pages reconciled against `docs/migration-map.csv`; added the missing published page `blogposts` (WP id 124). Repeatable with `python3 scripts/inventory_site.py`.
+
 ## Blockers / next action
 
-Phase 0 needs inputs only Alexander has: WordPress export (WXR and/or API) + full backup, complete live URL/asset inventory, Simply.com deploy-path and credential review (SFTP/SSH, `.htaccess`/301 capability), and the analytics/Search Console baseline (#51). Next action: Alexander provides the WP export and Simply.com access details; then run the non-destructive discovery in #51 and create prioritized content-review batches before any production change.
+Phase 0 public recon is done; the remaining Phase 0 items need inputs only Alexander has: (1) WordPress admin export (WXR + DB/uploads backup) for drafts, Rank Math SEO fields and the 6 non-public media items, (2) Search Console access for the traffic/indexing baseline (#51), (3) Simply.com control-panel/SFTP details for the deploy path, `.htaccess`/301 capability and staging option. Next action: Alexander provides those; then verify the recoverable backup (Gate 0) and create the #51 content-review batches before any production change.
 
 ## Non-negotiables (from #50 / README)
 
