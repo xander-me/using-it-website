@@ -15,6 +15,10 @@ This repository is the sole working home for the using-it.dk 2.0 Astro site. Rea
 
 https://using-it.dk still runs the original WordPress site. Cutover to this Astro build is **planned but not authorized**; it follows the phase gates in project-playbook #50 (Phase 0 inventory → … → Gate 6 production acceptance).
 
+## SEO & analytics decision — 2026-11-22
+
+[ADR-001](docs/adr-001-seo-analytics.md): technical SEO only (sitemap, RSS, robots, canonical, OG/Twitter cards, JSON-LD Article, llms.txt — implemented and verified in the build). Traffic stats: Search Console + GoAccess on Simply.com logs (zero cookies, no banner, 0 DKK); optional later self-hosted cookie-less Umami on the home Proxmox box; **no analytics SaaS, no tracker snippet shipped** (needs explicit approval per #50/#51).
+
 ## Phase 0 discovery (public, non-destructive) — done 2026-11-22
 
 See [docs/phase0-discovery-2026-11-22.md](docs/phase0-discovery-2026-11-22.md), [docs/url-inventory-2026-11-22.csv](docs/url-inventory-2026-11-22.csv) (40 URLs, all sitemap URLs 200), [docs/media-inventory-2026-11-22.csv](docs/media-inventory-2026-11-22.csv) (28 of 34 media via public REST). Findings: WP 7.1.5 on Simply.com Apache, Rank Math SEO, theme elite-blog, **no analytics tags or cookies on public pages**, xmlrpc disabled (405), `/timecalc/timecalc.html` + `/timecalc/BO.html` live (200) and protected, `/tools/` draft 403. All 9 published posts + 6 pages reconciled against `docs/migration-map.csv`; added the missing published page `blogposts` (WP id 124). Repeatable with `python3 scripts/inventory_site.py`.

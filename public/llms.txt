@@ -1,0 +1,10 @@
+# Using-IT
+
+> Technical articles, tools and Microsoft licensing from a practitioner. Intune, Edge, Windows 365, Conditional Access and more.
+
+Site: https://using-it.dk
+Blog archive: https://using-it.dk/blogposts/
+RSS feed: https://using-it.dk/feed/ (also at /rss.xml on the new build)
+Sitemap: https://using-it.dk/sitemap_index.xml
+
+Content is original work by Alexander Christensen unless noted. Articles may be quoted with attribution and a link.

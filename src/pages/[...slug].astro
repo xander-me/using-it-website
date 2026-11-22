@@ -16,7 +16,27 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+const d = entry.data;
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: d.title,
+  description: d.description || d.title,
+  datePublished: d.pubDate,
+  ...(d.updatedDate ? { dateModified: d.updatedDate } : {}),
+  author: { '@type': 'Person', name: 'Alexander Christensen', url: 'https://using-it.dk/about-me/' },
+  publisher: { '@type': 'Organization', name: 'Using-IT', url: 'https://using-it.dk/' },
+  mainEntityOfPage: d.original_url ?? new URL(Astro.url.pathname, Astro.site).toString(),
+  ...(d.image ? { image: new URL(d.image, Astro.site).toString() } : {}),
+  ...(d.categories?.length ? { articleSection: d.categories.join(', ') } : {}),
+};
 ---
-<Base title={`${entry.data.title} · Using-IT`} description={entry.data.description || entry.data.title}>
+<Base
+  title={`${d.title} · Using-IT`}
+  description={d.description || d.title}
+  image={d.image}
+  type="article"
+  jsonLd={jsonLd}
+>
   <Article entry={entry} />
 </Base>
